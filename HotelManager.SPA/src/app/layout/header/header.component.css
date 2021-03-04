@@ -1,0 +1,32 @@
+.header {
+  background-color: #f44332;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  height: 64px;
+}
+.header__title {
+  display: flex;
+  align-items: center;
+}
+.header__title-button {
+  background-color: #f44332;
+  box-shadow: none;
+}
+.header__title-button:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+@media (max-width: 576px) {
+  .header__title-button {
+    margin-top: 0;
+  }
+}
+.header__title-button-icon {
+  color: white;
+}
+.header__title-text {
+  color: white;
+  margin-left: 32px;
+  font-weight: 400;
+}

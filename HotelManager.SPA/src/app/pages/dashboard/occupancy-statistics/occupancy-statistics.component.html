@@ -1,0 +1,17 @@
+<mat-card class="dashboard-card">
+  <mat-card-header>
+    <mat-card-title>
+      Занятость номеров
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <ngx-charts-pie-chart
+      [results]="data"
+      [legend]="showLegend"
+      [legendTitle]="legendTitle"
+      [labels]="showLabels"
+    >
+    </ngx-charts-pie-chart>
+  </mat-card-content>
+</mat-card>

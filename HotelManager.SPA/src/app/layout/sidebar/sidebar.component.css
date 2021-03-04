@@ -1,0 +1,49 @@
+.mat-list {
+  border-bottom: 1px solid #d8d8d8;
+  width: 210px;
+  padding-bottom: 16px;
+}
+
+.mat-list .mat-list-item {
+  display: flex;
+  cursor: pointer;
+  color: rgba(110, 110, 110, 0.8);
+  width: auto;
+  padding-left: 4px;
+}
+
+.mat-list .mat-list-item.active {
+  color: #4a4a4a;
+  background-color: #f3f5ff;
+  outline: none;
+}
+
+.mat-list .mat-list-item.active .mat-icon {
+  color: #f44332;
+}
+
+.mat-list .mat-list-item.active .circle {
+  background-color: #f44332;
+}
+
+.mat-list .mat-list-item:hover {
+  background-color: #f3f5ff;
+}
+
+.mat-list .mat-list-item:focus {
+  outline: none;
+}
+
+.mat-icon {
+  margin-right: 15px;
+  color: rgba(110, 110, 110, 0.7);
+}
+
+.sidebar-title {
+  color: rgba(110, 110, 110, 0.8);
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-top: 32px;
+  margin-left: 24px;
+  margin-bottom: 16px;
+}

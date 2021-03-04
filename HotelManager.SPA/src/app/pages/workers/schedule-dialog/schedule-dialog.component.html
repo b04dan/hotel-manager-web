@@ -1,0 +1,42 @@
+<h3 mat-dialog-title>Расписание работника <b>«{{data.worker.surname}} {{data.worker.name}}»</b></h3>
+<mat-dialog-content class="mat-typography">
+  <table>
+    <tr>
+      <td>Понедельник</td>
+      <td>{{data.schedule.monday | scheduleCell}}</td>
+    </tr>
+
+    <tr>
+      <td>Вторник</td>
+      <td>{{data.schedule?.tuesday | scheduleCell}}</td>
+    </tr>
+
+    <tr>
+      <td>Среда</td>
+      <td>{{data.schedule?.wednesday | scheduleCell}}</td>
+    </tr>
+
+    <tr>
+      <td>Четверг</td>
+      <td>{{data.schedule?.thursday | scheduleCell}}</td>
+    </tr>
+
+    <tr>
+      <td>Пятница</td>
+      <td>{{data.schedule?.friday | scheduleCell}}</td>
+    </tr>
+
+    <tr>
+      <td>Субота</td>
+      <td>{{data.schedule?.saturday | scheduleCell}}</td>
+    </tr>
+
+    <tr>
+      <td>Воскресенье</td>
+      <td>{{data.schedule?.sunday | scheduleCell}}</td>
+    </tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Выход</button>
+</mat-dialog-actions>

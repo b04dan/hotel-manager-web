@@ -1,0 +1,74 @@
+<mat-card>
+  <mat-card-title>
+    <button mat-icon-button class="search-btn">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <mat-form-field>
+      <mat-label>Поиск в таблице</mat-label>
+      <input matInput [(ngModel)]="filter" (keyup)="applyFilter()">
+      <button mat-button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="removeFilter()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card-title>
+
+  <mat-card-content>
+    <table mat-table matSort [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="monday">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Понедельник</th>
+        <td mat-cell *matCellDef="let element"> {{element.monday | scheduleCell}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tuesday">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Вторник</th>
+        <td mat-cell *matCellDef="let element"> {{element.tuesday | scheduleCell}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="wednesday">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Среда</th>
+        <td mat-cell *matCellDef="let element"> {{element.wednesday | scheduleCell}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="thursday">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Четверг</th>
+        <td mat-cell *matCellDef="let element"> {{element.thursday | scheduleCell}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="friday">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Пятница</th>
+        <td mat-cell *matCellDef="let element"> {{element.friday | scheduleCell}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="saturday">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Субота</th>
+        <td mat-cell *matCellDef="let element"> {{element.saturday | scheduleCell}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sunday">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Воскресенье</th>
+        <td mat-cell *matCellDef="let element"> {{element.sunday | scheduleCell}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div class="spinner-container" *ngIf="isLoading">
+      <mat-progress-spinner
+        color="primary"
+        mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+  </mat-card-content>
+
+  <mat-paginator [length]="dataSource.data?.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons></mat-paginator>
+</mat-card>

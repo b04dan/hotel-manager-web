@@ -1,0 +1,20 @@
+<app-layout>
+
+  <mat-toolbar class="page-header" role="heading">
+    <h1>Главная</h1>
+  </mat-toolbar>
+
+  <mat-grid-list cols="2" rowHeight="400px">
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <app-check-in-out-statistics [data]="(checkInOutStatistics | async)!"></app-check-in-out-statistics>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <app-numbers-statistics [data]="numbersStatistics | async"></app-numbers-statistics>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <app-occupancy-statistics [data]="occupancyStatistics | async"></app-occupancy-statistics>
+    </mat-grid-tile>
+  </mat-grid-list>
+</app-layout>

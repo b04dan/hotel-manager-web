@@ -1,0 +1,12 @@
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.mat-card-content{
+  height: 90%;
+  margin: 10px;
+}

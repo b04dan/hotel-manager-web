@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-title>
+    <button mat-icon-button class="search-btn">
+      <mat-icon>search</mat-icon>
+    </button>
+
+    <mat-form-field>
+      <mat-label>Поиск в таблице</mat-label>
+      <input matInput [(ngModel)]="filter" (keyup)="applyFilter()">
+      <button mat-button *ngIf="filter" matSuffix mat-icon-button aria-label="Clear" (click)="removeFilter()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </mat-card-title>
+
+  <mat-card-content>
+    <table mat-table matSort [dataSource]="dataSource">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="clientSNP">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Клиент</th>
+        <td mat-cell *matCellDef="let element"> {{element.clientSNP}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hotelRoomId">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Номер комнаты</th>
+        <td mat-cell *matCellDef="let element"> {{element.hotelRoomId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="checkInDate">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Заселение</th>
+        <td mat-cell *matCellDef="let element"> {{element.checkInDate | residenceDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="checkOutDate">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Выселение</th>
+        <td mat-cell *matCellDef="let element"> {{element.checkOutDate | residenceDate}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="control">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Управление</th>
+        <td mat-cell *matCellDef="let element">
+          <button *ngIf="!element.checkOutDate" mat-raised-button color="warn">Выселить</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <div class="spinner-container" *ngIf="isLoading">
+      <mat-progress-spinner
+        color="primary"
+        mode="indeterminate">
+      </mat-progress-spinner>
+    </div>
+  </mat-card-content>
+
+  <mat-paginator [length]="dataSource.data?.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons></mat-paginator>
+</mat-card>

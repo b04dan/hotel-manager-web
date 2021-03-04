@@ -1,0 +1,7 @@
+<app-layout>
+  <mat-toolbar class="page-header" role="heading">
+    <h1>Клиенты</h1>
+  </mat-toolbar>
+
+  <app-clients-table [clientsTableData]="(clients | async)!"></app-clients-table>
+</app-layout>
